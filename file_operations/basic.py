@@ -52,4 +52,18 @@ file_creation = open("new_name.txt") # we opened the file again to access its co
 print(file_creation.read()) # now we are reading its contents 
 
 
+########### overwriting existing data ########
+# currently we have a file named context containing names -> Dave, John , Debby , Alex
+
+# by overwriting we will erase all the data and replace it th new one 
+file_overwrite = open("context.txt", "w")
+file_overwrite.write("I overwrote and deleted all the data")
+file_overwrite.close
+
+# it will delte the dave, john , debby, alex and replace it with 
+# "I overwrote and deleted all the data"
+
+# if we use write operation on a file that doesnt exist it will create that file 
+
+
 
