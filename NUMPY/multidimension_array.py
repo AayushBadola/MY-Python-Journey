@@ -320,3 +320,24 @@ array_pattern_2[2,2] = 9
 print("Pattern with alternate method: \n")
 print(array_pattern_2, "\n")
 
+###### RESHAPE ARRAY ######
+main_array = np.array([1,2,3,4,5,6])
+print(f"Original Array: {main_array} \n")
+reshaped_arr = main_array.reshape((3,2)) # we change the array's shape
+print(f"Reshaped array : \n {reshaped_arr} \n")
+
+##### FLATTEN an array is basically reshaping array into one axis
+
+non_flat_array = np.array([[1,2,3], [4,5,6], [7,8,9]]) # a 3x3 Matrix so 2D shape or (3,3)
+flat_arr_flatten = non_flat_array.flatten()
+flat_arr_reshape = non_flat_array.reshape((non_flat_array.size, )) # data on one axis
+# we will compare how the "flatten" function work and is it same as .reshape()
+print(f"Original Array : {non_flat_array} \n")
+print(f"Flattened from function : {flat_arr_flatten}\n" )
+print(f"Flattented by reshaping: {flat_arr_reshape} \n")
+
+print("Checking if the original is changed after applying \n")
+print(f"original now : {non_flat_array} \n") 
+
+# for all of the above they give a copy 
+# for ravel we get a view of the original array 
