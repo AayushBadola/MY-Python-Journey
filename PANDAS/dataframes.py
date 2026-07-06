@@ -10,8 +10,10 @@ data = {
 ######################## creating a data frame df #########################
 df = pd.DataFrame(data,index=["Emp1", "Emp2", "Emp3"])
 
-# df formed will be a matrix 
+# The DataFrame is a 2D table.
+# Unlike NumPy arrays, different columns can store different data types.
 
+# a data frame column is a series
 #            Name  age
 # Emp1  spongebob   30
 # Emp2    patrick   32
@@ -21,7 +23,9 @@ df = pd.DataFrame(data,index=["Emp1", "Emp2", "Emp3"])
 # we can access it similar to a series using loc OR iloc
 
 print(f"Accessing employee 1:\n{df.loc['Emp1']}\n") # gives us the "ROW" EMP1
-
+print(f"Acessing the column of names:\n{df['Name']}")
+# note: we can NOT use df.loc["Name"] to get the entire column 
+# BUT WE CAN USE IT LIKE THIS : df.loc[:,"Name"]
 print(f"Entire data frame:\n{df}\n")
 
 print("Now By doing iloc and doing values 0,1,2 we get values of row 1,2,3 respectively \n")
