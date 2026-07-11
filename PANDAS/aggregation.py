@@ -42,7 +42,7 @@ print("from this above data we know there are a total of 4 legendary in this dat
 
 #################### MINIMUM VALUES IN EACH COL #############
 min_numeric_data = (df.min(numeric_only=True))
-print(f"Minimum value in each column containing numeric values: \n{min_numeric_data}\n\n")\
+print(f"Minimum value in each column containing numeric values: \n{min_numeric_data}\n\n")
 
 #################### MAX VALUES IN EACH COL ##################
 
@@ -50,7 +50,7 @@ print(f"Minimum value in each column containing numeric values: \n{min_numeric_d
 # hence we are stating numeric values = True since we only wants cols with numeric values 
 
 max_numeric_data = (df.max(numeric_only=True))
-print(f"Max vlaue in each column containing numeric values: \n{max_numeric_data}\n\n")
+print(f"Max value in each column containing numeric values: \n{max_numeric_data}\n\n")
 
 ######################## COUNT TOTAL VALUES IN EACH COLUMN  ################
 
@@ -61,15 +61,14 @@ print(f"Counting values per column , TYPE2 SOME VALS ARE NULL SO IT WILL BE LESS
 
 ################################# AGGREGATE FUNCTION PER COLUMN #################################
 
-# in previous chapters we were doing aggregate function on the entire dataset hence we used to get all cols
-# in this we will apply aggregate functions per column 
+# In the previous examples we applied aggregate functions to the entire DataFrame.
+# Now we'll apply aggregate functions to a single column.
 
 # to select a column we do df["Column Name"].Aggregatefunction()
 
 # SAME AS AGGREGATE FUNCTIONS WORKING FOR WHOLE DATAFRAME BUT INSTEAD OF df WE USE df["column Name"]
 
-print("---------------------- GROUPING DATA BASED ON values or conditions ---------------------------")
-
+print("---------------------- GROUPING DATA BASED ON COLUMN VALUES ---------------------------")
 ######################### GROUPING DATA BASED ON COLUMNS #######################
 # for any data we can group it based on certain factors 
 
@@ -81,17 +80,128 @@ print("---------------------- GROUPING DATA BASED ON values or conditions ------
 # fire           75
 
 # and so on 
-# for that we need to use "groupby("Column Name")" condition 
+# for that we need to use group = "df.groupby("GROUP CONDITION")" condition 
+# now we can slect whatever metric we want , MEAN , MEDIAN , MAX ,MIN,SUM 
+# we do this using group["COLUMN WE WANT"].Aggregatefunction()
 
 group_type1 = df.groupby("Type1") # the data in which we want to group them / seprate them (based on their type1)
 mean_weight_per_type1 = group_type1["Weight"].mean()
 print(f"Mean Weight per Type1 Affinity Pokemon:\n{mean_weight_per_type1}\n\n")
 
-group_legendary = df.groupby("Legendary") # data sepration based on pokemon which are legendary and which are not
+group_legendary = df.groupby("Legendary") # # data separation based on pokemon which are legendary and which are not
 mean_height_legendary = group_legendary["Height"].mean()
 
 print(f"Mean Height of Legendary and non Legendary :\n{mean_height_legendary}\n\n")
 
+######################## MEDIAN OF NUMERIC COLUMNS #################
+
+# median is the "middle" value of sorted data
+# unlike mean the median is not heavily affected by extremely large or small values
+# hence if our data has outliers then median is usually a better representation
+
+median_numeric_data = df.median(numeric_only=True)
+print(f"Median of all numeric columns:\n{median_numeric_data}\n\n")
+
+
+######################## STANDARD DEVIATION ########################
+
+# standard deviation tells us how spread out our data is from the mean
+# if std is small then most values are close to the mean
+# if std is large then the values are spread far apart
+
+std_numeric_data = df.std(numeric_only=True)
+print(f"Standard Deviation of numeric columns:\n{std_numeric_data}\n\n")
+
+
+######################## VARIANCE ########################
+
+# variance also tells us how spread out our data is
+# variance is simply the square of standard deviation
+# generally standard deviation is easier to interpret than variance
+
+variance_numeric_data = df.var(numeric_only=True)
+print(f"Variance of numeric columns:\n{variance_numeric_data}\n\n")
+
+
+######################## COUNTING UNIQUE VALUES ########################
+
+# unlike "count()" which counts every value in a column
+# "nunique()" counts only the UNIQUE values present in that column
+
+# EXAMPLE
+# Fire
+# Water
+# Fire
+# Grass
+# Water
+# ----------------
+# UNIQUE VALUES = Fire, Water, Grass
+# hence total unique values = 3
+
+unique_type1_count = df["Type1"].nunique()
+print(f"Total unique Type1 Pokemon Affinities: {unique_type1_count}\n\n")
+
+
+######################## SHOWING UNIQUE VALUES ########################
+
+# if we dont want the count but instead want the actual unique values
+# then we use "unique()"
+
+# unlike "nunique()" this returns the values themselves
+
+unique_type1 = df["Type1"].unique()
+print(f"Unique Type1 Pokemon Affinities:\n{unique_type1}\n\n")
+
+
+######################## COUNTING OCCURANCE OF EACH VALUE ########################
+
+# sometimes we dont only want the unique values
+# we also want to know how many times each value occurs
+
+# for that we use "value_counts()"
+
+# EXAMPLE
+# Fire
+# Water
+# Fire
+# Fire
+# Grass
+# ----------------
+# Fire -> 3
+# Water -> 1
+# Grass -> 1
+
+type1_count = df["Type1"].value_counts()
+print(f"Total Pokemon per Type1 Affinity:\n{type1_count}\n\n")
+
+
+######################## DESCRIBING THE DATA ########################
+
+# instead of individually finding mean, median, min, max etc
+# pandas provides a shortcut called "describe()"
+
+# describe() returns many useful statistics together
+
+# count  -> total values
+# mean   -> average value
+# std    -> standard deviation
+# min    -> minimum value
+# 25%    -> first quartile (Q1)
+# 50%    -> median (Q2)
+# 75%    -> third quartile (Q3)
+# max    -> maximum value
+
+describe_numeric_data = df.describe()
+print(f"Statistical Summary of Dataset:\n{describe_numeric_data}\n\n")
+
+# BASICALLY BOX PLOT USED IN STATISTICS AND THE 5 value summary 
+'''
+       Min          Q1         Median        Q3          Max
+        |           |            |           |            |
+        |-----------|============|===========|------------|
+        0           25           50          75          100
+
+'''
 
 
 
