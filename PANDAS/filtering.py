@@ -67,5 +67,7 @@ fire_flying_pokemon = df [ (df["Type1"] == "Fire") & (df["Type2"] == "Flying") ]
 
 print(f"Pokemon with fire + flying affinity:\n{fire_flying_pokemon}\n\n")
 
+# IMORTANT : WE CAN SIMILARLY DO THAT FOR or operator ("|" <- this one)
+
 
 
