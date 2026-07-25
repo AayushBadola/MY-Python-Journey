@@ -100,7 +100,7 @@ print(f"Selecting multiple rows and specific columns:\n{df_csv.loc[0:5, ['Name',
 
 '''
 
-df_csv = pd.read_csv("data\data.csv", index_col="Name") # now the label is by the name column
+df_csv = pd.read_csv("data/data.csv", index_col="Name") # now the label is by the name column
 pokemon = input("Enter the Name of pokemon you want to search: ").capitalize()
 
 try:
