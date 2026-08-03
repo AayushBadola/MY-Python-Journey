@@ -122,5 +122,25 @@ if __name__ == "__main__":
     get_pokemon_info_updated(user_pokemon)
     
     
-    
+    ############################ some basic status codes and what they mean #############################
+    """
+    HTTP Status Codes
+
+    Error Code | WHAT IT MEANS
+    200        | OK - Yay! Everything worked perfectly.
+    201        | Created - Success! Your new thing was made.
+    301        | Moved Permanently - Go away! This moved to a new home forever.
+    400        | Bad Request - Huh? You made a silly mistake.
+    401        | Unauthorized - Stop! You need to log in first.
+    403        | Forbidden - No! You are absolutely not allowed here.
+    404        | Not Found - Lost! The computer cannot find this page.
+    405        | Method Not Allowed - Wrong button! You cannot use that action here.
+    500        | Internal Server Error - Boom! The computer broke on the inside.
+    502        | Bad Gateway - Bad middleman! The computer got a broken link.
+
+    """
+
+
+
+
  
