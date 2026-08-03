@@ -44,7 +44,7 @@ if __name__ == "__main__":
         if pokemon_info.status_code == 200:
             print("Data Retrived ! \n HERE IS YOU DATA: \n")
             pokemon_data = pokemon_info.json() # now we will get a structured response 
-            print(json.dumps(pokemon_data, indent=4))
+            print(json.dumps(pokemon_data, indent=4)) # just makes the data more "presentable"
 
         else:
             print(f"Failed to Retrive the Data {pokemon_info.status_code}\n please check the \"get_pokemon_info\" function")
